@@ -1,0 +1,189 @@
+[
+  {
+    "tag": "tolong",
+    "patterns": {
+      "id": [
+        "1",
+        "tolong",
+        "bantu saya",
+        "butuh bantuan",
+        "minta tolong",
+        "saya bingung",
+        "apa yang harus saya lakukan"
+      ],
+      "en": [
+        "1",
+        "help",
+        "please",
+        "need help",
+        "can you help me",
+        "i don't understand"
+      ]
+    },
+    "handler": "handleHelp",
+    "responses": {
+      "id": [
+        "Berikut bantuan yang tersedia:\n1. Tolong\n2. Kenalan\n3. Ubah Bahasa\n4. Kontak\n5. Lokasi Kantor \n\n> automatic message created by MIRA © curaweda.com"
+      ],
+      "en": [
+        "Here are the available commands:\n1. Help\n2. Introduction\n3. Change Language\n4. Contact\n5. Office Location \n\n> automatic message created by MIRA © curaweda.com"
+      ]
+    }
+  },
+  {
+    "tag": "kenalan",
+    "patterns": {
+      "id": [
+        "2",
+        "siapa",
+        "kenalan",
+        "kenalan dong",
+        "hai",
+        "halo",
+        "kamu siapa",
+        "siapa kamu",
+        "perkenalkan dirimu",
+        "kenalan yuk"
+      ],
+      "en": [
+        "2",
+        "hello",
+        "hi",
+        "who",
+        "who are you",
+        "introduce yourself",
+        "tell me about yourself"
+      ]
+    },
+    "handler": "handleIntroduce",
+    "responses": {
+      "id": [
+        "Halo, saya adalah bot otomatis dari Curaweda 🤖 Siap membantu kamu kapan pun! Ketik *'tolong'* untuk informasi lebih lanjut. \n\n> automatic message created by MIRA © curaweda.com",
+        "Salam kenal! Saya bot otomatis dari Curaweda 🤖 Siap membantu kamu kapan pun! Ketik *'tolong'* untuk informasi lebih lanjut. \n\n> automatic message created by MIRA © curaweda.com"
+      ],
+      "en": [
+        "Hello! I'm Curaweda's virtual assistant 🤖 Ready to help you anytime! Type *'help'* to learn more. \n\n> automatic message created by MIRA © curaweda.com",
+        "Hi there! I'm the Curaweda bot 🤖 Always here to assist you. Try typing *'help'* to get started. \n\n> automatic message created by MIRA © curaweda.com"
+      ]
+    }
+  },
+  {
+    "tag": "kontak",
+    "patterns": {
+      "id": [
+        "5",
+        "hubungi admin",
+        "kontak admin",
+        "ada kendala",
+        "laporkan masalah",
+        "butuh teknisi"
+      ],
+      "en": [
+        "5",
+        "contact", 
+        "contact admin", 
+        "need helpdesk", 
+        "report", 
+        "helpdesk"
+      ]
+    },
+    "handler": "handleContact",
+    "responses": {
+      "id": ["Silakan hubungi helpdesk di support@curaweda.com. \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["Please contact the helpdesk at support@curaweda.com. \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  },
+  {
+    "tag": "lokasi kantor",
+    "patterns": {
+      "id": ["6", "alamat", "lokasi", "lokasi kantor", "alamat kantor", "domisili", "dimana", "dimana alamat kantor"],
+      "en": ["6", "where", "where office", "office address", "addres", "location"]
+    },
+    "handler": "handleOfficeLocation",
+    "responses": {
+      "id": [
+        "Alamat kantor utama: Jl. Taman Pramuka No.157, Cihapit, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40291 \n\n> automatic message created by MIRA © curaweda.com"
+      ],
+      "en": [
+        "Main office address: Jl. Taman Pramuka No.157, Cihapit, Bandung, West Java 40291 \n\n> automatic message created by MIRA © curaweda.com"
+      ]
+    }
+  },
+  {
+    "tag": "terimakasih",
+    "patterns": {
+      "id": [
+        "makasih",
+        "makasih ya",
+        "makasih banyak",
+        "terimakasih",
+        "terima kasih ya",
+        "terima kasih"
+      ],
+      "en": ["thanks", "thank you", "thank you so much", "thanks a lot", "thx" ]
+    },
+    "handler": "handleThankyou",
+    "responses": {
+      "id": [
+        "Sama-sama! Senang bisa membantu 😊 \n\n> automatic message created by MIRA © curaweda.com",
+        "Terima kasih kembali 😊\n\n> automatic message created by MIRA © curaweda.com",
+        "Dengan sepenuh hati ❤️ \n\n> automatic message created by MIRA © curaweda.com"
+      ],
+      "en": [
+        "You're welcome! Glad I could help 😊 \n\n> automatic message created by MIRA © curaweda.com",
+        "My pleasure 😊\n\n> automatic message created by MIRA © curaweda.com",
+        "Happy to assist ❤️ \n\n> automatic message created by MIRA © curaweda.com"
+      ]
+    }
+  },
+  {
+    "tag": "invalidChoice",
+    "patterns": { "id": [], "en": [] },
+    "responses": {
+      "id": ["Pilihan tidak valid. \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["Invalid choice. \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  },
+  {
+    "tag": "chooseLanguage",
+    "patterns": {
+      "id": ["3", "bahasa", "ubah bahasa", "ganti bahasa"],
+      "en": ["3", "language", "change langugae", "reset language"]
+    },
+    "handler": "handleLanguage",
+    "responses": {
+      "id": ["Silakan pilih bahasa:\n1. Indonesia\n2. English \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["Please choose language:\n1. Indonesia\n2. English \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  },
+  {
+    "tag": "approvalNotFound",
+    "patterns": { "id": [], "en": [] },
+    "responses": {
+      "id": ["❌ Tidak dapat menemukan approval yang sesuai. \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["❌ Cannot find matching approval. \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  },
+  {
+    "tag": "noReason",
+    "patterns": { "id": [], "en": [] },
+    "responses": {
+      "id": ["Tidak ada alasan \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["No reason \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  },
+  {
+    "tag": "notVerified",
+    "responses": {
+      "id": ["Kamu belum terverifikasi. Ketik *verifikasi* untuk aktivasi. \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["You are not verified. Type *verify* to activate. \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  },
+  {
+    "tag": "verified",
+    "responses": {
+      "id": ["Akun kamu sudah diverifikasi ✅. \n\n> automatic message created by MIRA © curaweda.com"],
+      "en": ["You verified. ✅ \n\n> automatic message created by MIRA © curaweda.com"]
+    }
+  }
+]

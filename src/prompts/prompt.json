@@ -1,0 +1,17 @@
+{
+  "general": {
+    "prompt": "Anda memicu command PROMPT dengan: ",
+    "help": "apa ada yang bisa saya bantu?",
+    "execute": "Anda menjalankan perintah EXECUTE. Memproses...",
+    "command": "Anda memicu COMMAND.",
+    "kenalan" : "hallo, perkenalkan saya *MIRA* _(Multifunction Intelligent Response Assistant)_ saya adalah Virtual Asisten dengan kecerdasan buatan yang dikembangan oleh Curaweda",
+    "blacklist": ""
+  },
+  "ifast": {
+    "pengajuan": "Perintah pengajuan Ifast sedang diproses.",
+    "rekap": "Perintah rekap Ifast sedang diproses.",
+    "permohonan": "Permohonan Sedang Di proses"
+  },
+  "fallback": "Saya tidak mengerti apa maksud anda, bisa di detailkan lagi perintahnya? atau gunakan perintah *Help* untuk bantuan",
+  "general_query": "Saya dapat membantu Anda dengan mengirim pesan, mengatur pengajuan, menyediakan informasi, dan banyak lagi. Silakan ketik *Help* untuk info lebih lanjut."
+}
