@@ -1,37 +1,31 @@
-import { Router } from "express";
-import validatorMiddleware from "../../middlewares/validator.middleware.js";
-import authenticationController from "./authentication.controller.js";
-import authenticationValidator from "./authentication.validator.js";
-import { baseValidator } from "../../base/validator.base.js";
-import auth from "../../middlewares/auth.middleware.js";
+import { Router } from 'express';
+import validatorMiddleware from '../../middlewares/validator.middleware.js';
+import AuthenticationController from './authentication.controller.js';
+import AuthenticationValidator from './authentication.validator.js';
+import auth from '../../middlewares/auth.middleware.js';
 
 const r = Router(),
-  validator = authenticationValidator,
-  controller = new authenticationController();
-
-r.get(
-  "/show-all",
-  validatorMiddleware({ query: baseValidator.browseQuery }),
-  controller.findAll
-);
-
-r.get("/show-one/:id", controller.findById);
+  validator = AuthenticationValidator,
+  controller = new AuthenticationController();
 
 r.post(
-  "/create",
+  '/login',
+  validatorMiddleware({ body: validator.login }),
+  controller.login
+);
+
+r.post(
+  '/refresh',
+  validatorMiddleware({ body: validator.refresh }),
+  controller.refresh
+);
+
+r.post(
+  '/register',
   auth(['ADMIN']),
-  validatorMiddleware({ body: validator.create }),
-  controller.create
-  );
-  
-  r.put(
-    "/update/:id",
-    auth(['ADMIN']),
-    validatorMiddleware({ body: validator.update }),
-    controller.update
-    );
-    
-r.delete("/delete/:id", auth(['ADMIN']), controller.delete);
+  validatorMiddleware({ body: validator.register }),
+  controller.register
+);
 
 const authenticationRouter = r;
 export default authenticationRouter;
