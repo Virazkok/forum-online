@@ -7,186 +7,26 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id         String    @id @default(uuid())
-  fullName   String?
-  email      String    @unique
-  password   String
-  phoneWA    String?
-  nik        Int
-  signature  String?
-  status     Boolean?  @default(true)
-  language   Boolean?   @default(false)
-  isVerified Boolean   @default(false)
-  createdAt  DateTime? @default(now())
-  divisionId String
-  division   Division  @relation(fields: [divisionId], references: [id], onDelete: Cascade)
-
-  roles         Roles[]
-  bankAccount   BankAccount[]
-  submissions   submission[]
-  approvals     Approval[]        @relation("UserApprovals")
-  histories     ApprovalHistory[]
-  hirarkyId     String?
-  hirarky       Hirarky?          @relation(fields: [hirarkyId], references: [id], onDelete: SetNull)
-  hirarkyLevels HirarkyLevel[]    @relation("HirarkyLevelApprover")
-}
-
-model BankAccount {
-  id        String    @id @default(uuid())
-  idUser    String
-  name      String
-  bankName  String
-  number    String    @unique
-  createdAt DateTime? @default(now())
-
-  user User @relation(fields: [idUser], references: [id], onDelete: Cascade)
-}
-
-model Roles {
-  id          String    @id @default(uuid())
-  name        String
-  code        String    @unique
-  description String?
-  createdAt   DateTime? @default(now())
-
-  users            User[]
-  permission Permissions[]
-}
-
-model Permissions {
-  id          String   @id @default(uuid())
-  roleId      String
-  label        String
-  subLabel        String   
-
-  read        Boolean  
-  create      Boolean
-  update      Boolean
-  delete      Boolean
-
-  description String?
-  created_at  DateTime @default(now())
-
-  role        Roles    @relation(fields: [roleId], references: [id], onDelete: Cascade)
-}
-
-model Division {
-  id          String    @id @default(uuid())
-  name        String
-  Code        String    @unique
-  description String?
-  createdAt   DateTime? @default(now())
-
-  user User[]
-}
-
-model submission {
-  id                String    @id @default(uuid())
-  userId            String
-  number            String    @unique
-  createdAt         DateTime? @default(now())
-  updatedAt         DateTime  @updatedAt
-  projectId         String?
-  date              DateTime
-  activity          String
-  description       String
-  status            String?
-  typeId            String?
-  submissionF4Id    String?
-
-  submissionDetail submissionDetail[]
-  approval         Approval[]
-  type             typeSubmission?    @relation(fields: [typeId], references: [id], onDelete: SetNull)
-  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  project          projectCode?      @relation(fields: [projectId], references: [id], onDelete: SetNull)
-}
-
-model submissionDetail {
-  id           String    @id @default(uuid())
-  submissionId String
-  name         String
-  qty          Int
-  categoryId   String?
-  amount       Float
-  evidence     String?
-  createdAt    DateTime? @default(now())
-
-  submission submission         @relation(fields: [submissionId], references: [id], onDelete: Cascade)
-  category   categorySubmission? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-}
-
-model categorySubmission {
-  id   String @id @default(uuid())
-  name String
-  code String @unique
-  description String?
-
-  submissionDetail submissionDetail[]
-}
-
-model typeSubmission {
-  id          String       @id @default(uuid())
-  name        String
-  code        String?      @unique
-  description String?
-  createdAt   DateTime?    @default(now())
-  submission  submission[]
-}
-
-model projectCode {
-  id          String    @id @default(uuid())
-  name        String
-  code        String    @unique
-  description String?
-  createdAt   DateTime? @default(now())
-
-  submission submission[]
-}
-
-model Approval {
-  id           String            @id @default(uuid())
-  submissionId String            
-  submission   submission        @relation(fields: [submissionId], references: [id], onDelete: Cascade)
-  sequence     Int
-  requiredRole String
-  status       String            @default("PENDING")
-  approverId   String?
-  approver     User?             @relation("UserApprovals", fields: [approverId], references: [id], onDelete: Cascade)
-  comment      String?
-  histories    ApprovalHistory[]
-  createdAt    DateTime          @default(now())
-  updatedAt    DateTime          @updatedAt
-}
-
-model ApprovalHistory {
+model Users {
   id         String   @id @default(uuid())
-  approvalId String
-  approval   Approval @relation(fields: [approvalId], references: [id], onDelete: Cascade)
-  actorId    String?
-  actor      User?    @relation(fields: [actorId], references: [id], onDelete: Cascade)
-  oldStatus  String?
-  newStatus  String
-  comment    String?
-  createdAt  DateTime @default(now())
+  fullName   String?
+  email      String   
+  password   String
+  profile_image String?
+  duration DateTime
+  kateqory_Id String?
+  status     Boolean   @default(true)
+  is_shadow_banned Boolean   @default(false)
+  bio String?
+  // kateqory   Categories? @relation(fields: [kateqory_Id], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
-model Hirarky {
-  id          String         @id @default(uuid())
-  name        String
-  description String?
-  levels      HirarkyLevel[]
-  users       User[]
-  createdAt   DateTime       @default(now())
-}
-
-model HirarkyLevel {
-  id           String   @id @default(uuid())
-  hirarkyId    String
-  hirarky      Hirarky  @relation(fields: [hirarkyId], references: [id], onDelete: Cascade)
-  sequence     Int
-  requiredRole String
-  approverId   String?
-  approver     User?    @relation("HirarkyLevelApprover", fields: [approverId], references: [id], onDelete: SetNull)
-  createdAt    DateTime @default(now())
+model Categories {
+  id        String      @id @default(uuid())
+  name      String
+  // users     Users[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
