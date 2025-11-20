@@ -1,7 +1,13 @@
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
+// Fix untuk ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Path absolut ke file private.pem
 const privateKeyPath = path.resolve(__dirname, '../../secrets/private.pem');
 const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
 
