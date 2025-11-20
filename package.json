@@ -7,7 +7,8 @@
     "start": "nodemon src/index.js",
     "db:seed": "node prisma/seeders/seed.js",
     "train": "node src/learning/training/training.model.js",
-    "watch": "node src/learning/training/watchAndRetrain.js"
+    "watch": "node src/learning/training/watchAndRetrain.js",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seeders/seed.js"
